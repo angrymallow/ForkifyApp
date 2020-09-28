@@ -14,9 +14,7 @@ class SliverSearchHeader implements SliverPersistentHeaderDelegate {
   final double maxExtent;
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    print(shrinkOffset);
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: maxExtent,
       child: Stack(
