@@ -1,4 +1,3 @@
-import "dart:convert";
 
 class Recipe {
   int recipeId;
@@ -107,18 +106,32 @@ class Ingredient {
           return quotient;
   }
 }
-
-class RecipeIngredients {
+class RecipeIngredient {
   Recipe recipe;
   bool isLiked;
   int serving, servingTime;
   List<Ingredient> ingredients;
 
-  RecipeIngredients.fromJson(Map<String, dynamic> json) {
-    this.recipe = Recipe.fromJSon(json);
-    List<Map<String, dynamic>> ingredientRaw =
-        jsonDecode(json.toString())['ingredients'];
-
-
+  RecipeIngredient.fromJson(Map<String, dynamic> json) {
+    this.recipe = Recipe.fromJSon(json['recipe']);
+    _parseIngredient(json['recipe']);
+    _calcServingTime();
+    _calcServingCount();
+  }
+  
+  void _parseIngredient(Map<String, dynamic> ingredientRaw) {
+    this.ingredients = List<String>.from(ingredientRaw['ingredients']).map((e) => Ingredient.fromRaw(e)).toList();
+  }
+  
+  void _calcServingTime() {
+    if (this.ingredients != null) {
+      this.servingTime = (this.ingredients.length ~/ 3) * 15;
+    }else {
+      this.servingTime = 0;
+    }
+  }
+  
+  void _calcServingCount() {
+    this.serving = 4;
   }
 }
