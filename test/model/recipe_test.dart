@@ -1,37 +1,20 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:ForkifyApp/model/recipe_model.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'dart:convert';
 
 void main() {
-  group('Parse Ingredient', () {
-    test('with Unit and Count', () {
-      const raw =
-          '4 1/2 cups (20.25 ounces) unbleached high-gluten, bread, or all-purpose flour, chilled';
-
-      final ingredient = Ingredient.fromRaw(raw);
-      expect(ingredient.count, 4.50);
-      expect(ingredient.unit, 'cup');
-      expect(ingredient.ingredient,
-          'unbleached high-gluten, bread, or all-purpose flour, chilled');
-    });
-
-    test('without Unit and with Count', () {
-      const raw = '4 unbleached high-gluten';
-
-      final ingredient = Ingredient.fromRaw(raw);
-      expect(ingredient.count, 4.0);
-      expect(ingredient.unit, '');
-      expect(ingredient.ingredient, 'unbleached high-gluten');
-    });
-
-    test('without Unit and without Count', () {
-      const raw =
-          'unbleached high-gluten, bread, or all-purpose flour, chilled';
-
-      final ingredient = Ingredient.fromRaw(raw);
-      expect(ingredient.count, 1.0);
-      expect(ingredient.unit, '');
-      expect(ingredient.ingredient,
-          'unbleached high-gluten, bread, or all-purpose flour, chilled');
+  group('Parse Recipe', (){
+    test('From JSON', () {
+      const jsonRaw = '''{"publisher": "101 Cookbooks","title": "Best Pizza Dough Ever","source_url": "http://www.101cookbooks.com/archives/001199.html","recipe_id": "47746","image_url": "http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg","social_rank": 100,"publisher_url": "http://www.101cookbooks.com"}
+      ''';
+     var recipe = Recipe.fromJSon(jsonDecode(jsonRaw));
+     expect(recipe.recipeId, 47746);
+     expect(recipe.publisher, '101 Cookbooks');
+     expect(recipe.title,'Best Pizza Dough Ever');
+     expect(recipe.sourceURL, 'http://www.101cookbooks.com/archives/001199.html');
+     expect(recipe.imageURL, 'http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg');
+     expect(recipe.socialRank,100);
+     expect(recipe.publisherURL, 'http://www.101cookbooks.com');
     });
   });
 }

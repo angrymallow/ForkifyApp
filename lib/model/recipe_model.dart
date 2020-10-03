@@ -8,22 +8,26 @@ class Recipe {
       this.publisherURL, this.sourceURL, this.socialRank);
 
   Recipe.fromJSon(Map<String, dynamic> json) {
-    this.recipeId = json['recipe_id'];
+    this.recipeId = int.tryParse(json['recipe_id']);
     this.publisher = json['publisher'];
     this.title = json['title'];
     this.sourceURL = json['source_url'];
     this.imageURL = json['image_url'];
-    this.socialRank = json['social_rank'];
+    this.socialRank = double.parse(json['social_rank'].toString());
     this.publisherURL = json['publisher_url'];
   }
 }
-
 class Ingredient {
   double count;
   String unit, ingredient;
   List<String> test;
   Ingredient(this.count, this.unit, this.ingredient);
   Ingredient.fromRaw(String raw) {
+    _formatRawData(raw);
+ }
+
+  void _formatRawData(String raw) {
+    String rawIng = raw.toLowerCase();
     const unitsLong = [
       'tablespoons',
       'tablesppon',
@@ -44,9 +48,6 @@ class Ingredient {
       'cup',
       'pound'
     ];
-
-    String rawIng = raw.toLowerCase();
-
     // Replace the units from API into the app standard units
     for (var i = 0; i < unitsLong.length; i++) {
       rawIng = rawIng.replaceAll(unitsLong[i], unitsShort[i]);
@@ -56,7 +57,6 @@ class Ingredient {
     rawIng = rawIng.replaceAllMapped(new RegExp(r'\([^)]*\)'), (match) {
       return '';
     });
-
     var arrIng = rawIng.split(' ');
     int unitInd = -1;
 
@@ -88,11 +88,10 @@ class Ingredient {
       }
     }
   }
-
+  
   double _getUnitValue(List<String> ingredientsInfo) {
     double unitNum = 0; 
-    for (var i = 0; i < ingredientsInfo.length; i++) {
-      int unitCount = int.tryParse(ingredientsInfo[i]);
+    for (var i = 0; i < ingredientsInfo.length; i++) { int unitCount = int.tryParse(ingredientsInfo[i]);
       if (unitCount != null) {
         unitNum += unitCount;
       }
@@ -100,10 +99,7 @@ class Ingredient {
         unitNum += _evaluateDivision(ingredientsInfo[i]);
       }
     }
-    return unitNum;
-  }
-
-  double _evaluateDivision(String expression) {
+    return unitNum; } double _evaluateDivision(String expression) {
      var nums = expression.toString().split('/');
           int dividend = int.tryParse(nums[0]);
           int divisor = int.tryParse(nums[1]);
@@ -119,9 +115,10 @@ class RecipeIngredients {
   List<Ingredient> ingredients;
 
   RecipeIngredients.fromJson(Map<String, dynamic> json) {
-    // this.recipe = Recipe(json['recipe_id'], json['title'], json['publisher'], json['image_url'], json['publisher_url'], json['source_url'], json['social_rank']);
     this.recipe = Recipe.fromJSon(json);
     List<Map<String, dynamic>> ingredientRaw =
         jsonDecode(json.toString())['ingredients'];
+
+
   }
 }
