@@ -21,19 +21,22 @@ class RecipeSummary extends StatelessWidget {
       padding: EdgeInsets.all(15.0),
       child: Row(
         children: [
-          Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(100)),
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    colorFilter: new ColorFilter.mode(
-                        Color(0xFFFBDB89).withOpacity(0.4),
-                        BlendMode.lighten),
-                    image: NetworkImage(
-                        '${this.imageURL}'))),
+          Hero(
+            tag: this.title.toUpperCase(),
+                      child: Container(
+              height: 60,
+              width: 60,
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(100)),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      colorFilter: new ColorFilter.mode(
+                          Color(0xFFFBDB89).withOpacity(0.4),
+                          BlendMode.lighten),
+                      image: NetworkImage(
+                          '${this.imageURL}'))),
+            ),
           ),
           Expanded(
             child: Container(
