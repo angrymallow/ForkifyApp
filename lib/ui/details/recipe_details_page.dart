@@ -1,4 +1,4 @@
-import 'package:ForkifyApp/constants.dart';
+import 'package:ForkifyApp/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import './components/recipe_general_info.dart';

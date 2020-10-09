@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../model/recipe_model.dart';
-import '../components/top_recipes.dart';
-import '../components/search_header_sliver.dart';
+import 'package:ForkifyApp/model/recipe_model.dart';
+import 'package:ForkifyApp/ui/components/top_recipes.dart';
+import 'package:ForkifyApp/ui/components/search_header_sliver.dart';
 
 class PageBody extends StatelessWidget {
   const PageBody({

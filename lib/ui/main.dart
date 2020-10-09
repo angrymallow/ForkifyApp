@@ -1,8 +1,7 @@
 
-import 'package:ForkifyApp/constants.dart';
 import 'package:flutter/material.dart';
-import './home/home_page.dart';
-import './constants.dart';
+import 'package:ForkifyApp/utilities/constants.dart';
+import 'package:ForkifyApp/ui/home/home_page.dart';
 void main() {
   runApp(MyApp());
 }
