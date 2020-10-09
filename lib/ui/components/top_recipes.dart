@@ -1,8 +1,8 @@
-import 'package:ForkifyApp/details/recipe_details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:ForkifyApp/ui/details/recipe_details_page.dart';
+import 'package:ForkifyApp/ui/home/recipe_summary.dart';
+import 'package:ForkifyApp/model/recipe_model.dart';
 
-import '../home/recipe_summary.dart';
-import '../model/recipe_model.dart';
 
 class TopRecipes extends StatelessWidget {
   const TopRecipes({
@@ -34,7 +34,7 @@ class TopRecipes extends StatelessWidget {
                         return RecipeDeatilsPage(
                           title: e.title,
                           imageURL: e.imageURL,
-                          // isLiked: e.isLiked,
+                          isLiked: true,
                         );
                       }));
                     },

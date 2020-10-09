@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants.dart';
+import 'package:ForkifyApp/utilities/constants.dart';
 
 class RecipeGeneralInfo extends StatelessWidget {
   const RecipeGeneralInfo({
