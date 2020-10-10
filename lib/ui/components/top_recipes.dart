@@ -3,7 +3,6 @@ import 'package:ForkifyApp/ui/details/recipe_details_page.dart';
 import 'package:ForkifyApp/ui/home/recipe_summary.dart';
 import 'package:ForkifyApp/model/recipe_model.dart';
 
-
 class TopRecipes extends StatelessWidget {
   const TopRecipes({
     Key key,
@@ -43,7 +42,7 @@ class TopRecipes extends StatelessWidget {
                       child: RecipeSummary(
                         title: e.title,
                         publisher: e.publisher,
-                        // likes: e.likes,
+                        likes: 1,
                         imageURL: e.imageURL,
                       ),
                       decoration: BoxDecoration(

@@ -14,14 +14,15 @@ class SliverSearchHeader implements SliverPersistentHeaderDelegate {
   final double maxExtent;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: maxExtent,
       child: Stack(
         children: <Widget>[
           Opacity(
             opacity: 1.0,
-                      child: Container(
+            child: Container(
               height: setHeaderHeight(shrinkOffset) - 30,
               decoration: BoxDecoration(
                   color: Color(0xFFF9F5F3),
@@ -33,7 +34,7 @@ class SliverSearchHeader implements SliverPersistentHeaderDelegate {
           Positioned(
             child: Opacity(
               opacity: setOpacity(shrinkOffset),
-                          child: Container(
+              child: Container(
                 height: 300,
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.center,
@@ -85,10 +86,7 @@ class SliverSearchHeader implements SliverPersistentHeaderDelegate {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [
-                        const Color(0xFFFBDB89),
-                        const Color(0xFFF48982)
-                      ]),
+                      colors: [Color(0xFFFBDB89), Color(0xFFF48982)]),
                   borderRadius: BorderRadius.all(Radius.circular(100)),
                   boxShadow: [
                     BoxShadow(
@@ -122,6 +120,15 @@ class SliverSearchHeader implements SliverPersistentHeaderDelegate {
   }
 
   double setHeaderHeight(double shrinkOffset) {
-    return max(minExtent,  maxExtent - shrinkOffset);
+    return max(minExtent, maxExtent - shrinkOffset);
   }
+
+  @override
+  // TODO: implement showOnScreenConfiguration
+  PersistentHeaderShowOnScreenConfiguration get showOnScreenConfiguration =>
+      throw UnimplementedError();
+
+  @override
+  // TODO: implement vsync
+  TickerProvider get vsync => throw UnimplementedError();
 }
