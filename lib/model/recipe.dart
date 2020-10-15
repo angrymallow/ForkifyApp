@@ -114,10 +114,10 @@ class RecipeIngredient {
   List<Ingredient> ingredients;
 
   RecipeIngredient.fromJson(Map<String, dynamic> json) {
-    this.recipe = Recipe.fromJSon(json['recipe']);
-    _parseIngredient(json['recipe']);
-    _calcServingTime();
-    _calcServingCount();
+    // this.recipe = Recipe.fromJSon(json['recipe']);
+    // _parseIngredient(json['recipe']);
+    // _calcServingTime();
+    // _calcServingCount();
   }
 
   void _parseIngredient(Map<String, dynamic> ingredientRaw) {

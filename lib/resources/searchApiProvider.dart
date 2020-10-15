@@ -10,12 +10,12 @@ class SearchApiProvider {
         .get('https://forkify-api.herokuapp.com/api/search?q=' + keyword);
     print(response.body);
     if (response.statusCode == 200) {
-      final jsonResponse = response.body;
-      List<Recipe> recipes =
-          List<Map<String, dynamic>>.from(jsonDecode(jsonResponse)['recipes'])
-              .map((model) => Recipe.fromJSon(model))
-              .toList();
-      return recipes;
+      // final jsonResponse = response.body;
+      // List<Recipe> recipes =
+      //     List<Map<String, dynamic>>.from(jsonDecode(jsonResponse)['recipes'])
+      //         .map((model) => Recipe.fromJSon(model))
+      //         .toList();
+      // return recipes;
     } else {
       throw Exception(response.statusCode);
     }
