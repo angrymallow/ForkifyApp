@@ -1,21 +1,19 @@
+import 'package:meta/meta.dart';
 
 class Recipe {
   int recipeId;
   double socialRank;
   String title, publisher, imageURL, publisherURL, sourceURL;
-  Recipe(this.recipeId, this.title, this.publisher, this.imageURL,
-      this.publisherURL, this.sourceURL, this.socialRank);
-
-  Recipe.fromJSon(Map<String, dynamic> json) {
-    this.recipeId = int.tryParse(json['recipe_id']);
-    this.publisher = json['publisher'];
-    this.title = json['title'];
-    this.sourceURL = json['source_url'];
-    this.imageURL = json['image_url'];
-    this.socialRank = double.parse(json['social_rank'].toString());
-    this.publisherURL = json['publisher_url'];
-  }
+  Recipe(
+      {@required this.recipeId,
+      @required this.title,
+      @required this.publisher,
+      @required this.imageURL,
+      @required this.publisherURL,
+      @required this.sourceURL,
+      @required this.socialRank});
 }
+
 class Ingredient {
   double count;
   String unit, ingredient;
@@ -23,7 +21,7 @@ class Ingredient {
   Ingredient(this.count, this.unit, this.ingredient);
   Ingredient.fromRaw(String raw) {
     _formatRawData(raw);
- }
+  }
 
   void _formatRawData(String raw) {
     String rawIng = raw.toLowerCase();
@@ -70,27 +68,26 @@ class Ingredient {
       this.count = _getUnitValue(arrIng.sublist(0, unitInd));
       this.unit = arrIng[unitInd];
       this.ingredient = arrIng.sublist(unitInd + 1).join(' ').trim();
-    }
-    else {
+    } else {
       // When there is a count but there's no unit
       if (double.tryParse(arrIng[0]) != null) {
-
         this.count = _getUnitValue(arrIng.sublist(0));
         this.unit = '';
         this.ingredient = arrIng.sublist(1).join(' ').trim();
       }
       // No Unit and No Count just ingredients :)
-      else if(unitInd == -1){
+      else if (unitInd == -1) {
         this.count = 1;
         this.unit = '';
         this.ingredient = rawIng;
       }
     }
   }
-  
+
   double _getUnitValue(List<String> ingredientsInfo) {
-    double unitNum = 0; 
-    for (var i = 0; i < ingredientsInfo.length; i++) { int unitCount = int.tryParse(ingredientsInfo[i]);
+    double unitNum = 0;
+    for (var i = 0; i < ingredientsInfo.length; i++) {
+      int unitCount = int.tryParse(ingredientsInfo[i]);
       if (unitCount != null) {
         unitNum += unitCount;
       }
@@ -98,14 +95,18 @@ class Ingredient {
         unitNum += _evaluateDivision(ingredientsInfo[i]);
       }
     }
-    return unitNum; } double _evaluateDivision(String expression) {
-     var nums = expression.toString().split('/');
-          int dividend = int.tryParse(nums[0]);
-          int divisor = int.tryParse(nums[1]);
-          double quotient = dividend / divisor;
-          return quotient;
+    return unitNum;
+  }
+
+  double _evaluateDivision(String expression) {
+    var nums = expression.toString().split('/');
+    int dividend = int.tryParse(nums[0]);
+    int divisor = int.tryParse(nums[1]);
+    double quotient = dividend / divisor;
+    return quotient;
   }
 }
+
 class RecipeIngredient {
   Recipe recipe;
   bool isLiked;
@@ -118,19 +119,21 @@ class RecipeIngredient {
     _calcServingTime();
     _calcServingCount();
   }
-  
+
   void _parseIngredient(Map<String, dynamic> ingredientRaw) {
-    this.ingredients = List<String>.from(ingredientRaw['ingredients']).map((e) => Ingredient.fromRaw(e)).toList();
+    this.ingredients = List<String>.from(ingredientRaw['ingredients'])
+        .map((e) => Ingredient.fromRaw(e))
+        .toList();
   }
-  
+
   void _calcServingTime() {
     if (this.ingredients != null) {
       this.servingTime = (this.ingredients.length ~/ 3) * 15;
-    }else {
+    } else {
       this.servingTime = 0;
     }
   }
-  
+
   void _calcServingCount() {
     this.serving = 4;
   }

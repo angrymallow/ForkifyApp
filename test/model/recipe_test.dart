@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:ForkifyApp/model/recipe_model.dart';
+import 'package:ForkifyApp/model/recipe.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'dart:convert';
 

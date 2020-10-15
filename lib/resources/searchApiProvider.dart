@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:ForkifyApp/model/recipe_model.dart';
+import 'package:ForkifyApp/model/recipe.dart';
 
 class SearchApiProvider {
   Client _client = Client();

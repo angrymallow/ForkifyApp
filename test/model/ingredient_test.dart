@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ForkifyApp/model/recipe_model.dart';
+import 'package:ForkifyApp/model/recipe.dart';
 
 void main() {
   group('Parse Ingredient', () {
@@ -34,8 +34,4 @@ void main() {
           'unbleached high-gluten, bread, or all-purpose flour, chilled');
     });
   });
-
-  
-
-
 }
