@@ -1,9 +1,8 @@
 import 'package:ForkifyApp/features/recipe/domain/entities/recipe.dart';
-import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
 class RecipeModel extends Recipe {
-  final int recipeId;
+  final String recipeId;
   final double socialRank;
   final String title;
   final String publisher;
@@ -20,5 +19,15 @@ class RecipeModel extends Recipe {
     @required this.sourceURL,
   });
 
-
+  factory RecipeModel.fromJson(Map<String, dynamic> json) {
+    return RecipeModel(
+      recipeId: json['recipe_id'],
+      socialRank: (json['social_rank'] as num).toDouble(),
+      title: json['title'],
+      publisher: json['publisher'],
+      imageURL: json['image_url'],
+      publisherURL: json['publisher_url'],
+      sourceURL: json['source_url'],
+    );
+  }
 }
