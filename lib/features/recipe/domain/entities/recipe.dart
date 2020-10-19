@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 class Recipe extends Equatable {
-  final int recipeId;
+  final String recipeId;
   final double socialRank;
   final String title;
   final String publisher;

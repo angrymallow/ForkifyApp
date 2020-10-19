@@ -21,7 +21,7 @@ void main() {
   final tRecipeId = '123';
   final tRecipeIngredient = RecipeIngredient(
     recipe: Recipe(
-      recipeId: 1,
+      recipeId: '1',
       socialRank: 1.0,
       title: "Test Title",
       publisher: 'Test Publisher',

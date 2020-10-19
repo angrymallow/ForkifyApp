@@ -19,7 +19,7 @@ void main() {
   final tKeyword = 'pizza';
   final List<Recipe> tRecipes = List.from([
     Recipe(
-      recipeId: 1,
+      recipeId: '1',
       socialRank: 1.0,
       title: "Test Title",
       publisher: 'Test Publisher',

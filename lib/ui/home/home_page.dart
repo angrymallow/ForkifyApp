@@ -1,5 +1,5 @@
+import 'package:ForkifyApp/features/recipe/domain/entities/recipe.dart';
 import 'package:flutter/material.dart';
-import 'package:ForkifyApp/model/recipe.dart';
 import 'package:ForkifyApp/ui/home/body.dart';
 import 'package:ForkifyApp/ui/components/navigation.dart';
 
