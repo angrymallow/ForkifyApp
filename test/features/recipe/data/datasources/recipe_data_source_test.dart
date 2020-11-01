@@ -1,3 +1,4 @@
+import 'package:ForkifyApp/core/error/exception.dart';
 import 'package:ForkifyApp/features/recipe/data/datasource/recipe_data_source.dart';
 import 'package:ForkifyApp/features/recipe/data/models/recipe_model.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,11 +20,12 @@ void main() {
 
   group('Get Recipes', () {
     final jsonRaw = fixture('recipes.json');
+    final tKeyword = 'pizza';
+
     test(
         'should return recipe list when status success and endpoint and headers are correct',
         () async {
       // Arrange
-      final tKeyword = 'pizza';
       final List<RecipeModel> tRecipes = [
         RecipeModel(
             recipeId: '47746',
@@ -52,8 +54,23 @@ void main() {
       final result = await dataSource.getRecipes(tKeyword);
 
       // Assert
-      verify(mockHttpClient.get(RECIPE_API_ENDPOINT, headers: {'Content-Type': 'application/json'}));
+      verify(mockHttpClient.get('https://forkify-api.herokuapp.com/api/search',
+          headers: {'Content-Type': 'application/json'}));
       expect(result, tRecipes);
     });
+    test(
+      'should return Server Exception when the status code is not 200(Success)',
+      () {
+        // Arrange
+        when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
+            (_) async => http.Response('Something went wrong', 404));
+
+        // Act
+        final call = dataSource.getRecipes;
+
+        // Assert
+        expect(() => call(tKeyword), throwsA(isA<ServerException>()));
+      },
+    );
   });
 }

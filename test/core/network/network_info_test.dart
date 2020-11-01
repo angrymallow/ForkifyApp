@@ -9,17 +9,17 @@ void main() {
   MockDataConnectionChecker mockDataConnectionChecker;
   NetworkInfoImpl networkInfo;
 
-  setUp((){
+  setUp(() {
     mockDataConnectionChecker = MockDataConnectionChecker();
-    networkInfo = NetworkInfoImpl(
-      dataConnectionChecker: mockDataConnectionChecker
-    );
+    networkInfo =
+        NetworkInfoImpl(dataConnectionChecker: mockDataConnectionChecker);
   });
 
-  test('should forward has connection property to the networkinfo', () async{
+  test('should forward has connection property to the networkinfo', () async {
     // Arrange
     final tHasConnectionFutre = Future.value(true);
-    when(mockDataConnectionChecker.hasConnection).thenAnswer((_) => tHasConnectionFutre);
+    when(mockDataConnectionChecker.hasConnection)
+        .thenAnswer((_) => tHasConnectionFutre);
 
     // Act
     final result = networkInfo.isConnected;

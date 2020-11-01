@@ -1,8 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:ForkifyApp/utilities/constants.dart';
 import 'package:ForkifyApp/ui/home/home_page.dart';
-void main() {
+import 'ioc.dart' as ioc;
+
+void main() async {
+  await ioc.init();
   runApp(MyApp());
 }
 
@@ -16,10 +18,8 @@ class MyApp extends StatelessWidget {
           textTheme: Theme.of(context)
               .textTheme
               .apply(bodyColor: colorPrimary, fontFamily: 'Oxygen')),
-        
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
 }
-
