@@ -1,7 +1,7 @@
+import 'package:ForkifyApp/core/ui/default_appbar.dart';
 import 'package:ForkifyApp/features/recipe/domain/entities/recipe.dart';
+import 'package:ForkifyApp/utilities/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:ForkifyApp/ui/home/body.dart';
-import 'package:ForkifyApp/ui/components/navigation.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -21,8 +21,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     this.topRecipes = new List<Recipe>();
     return Scaffold(
-      body: PageBody(topRecipes: topRecipes),
-      bottomNavigationBar: MyBottomNavigation(),
+      appBar: DefaultAppBar(),
+      body: Text('Test Body'),
+      // bottomNavigationBar: MyBottomNavigation(),
     );
   }
 }

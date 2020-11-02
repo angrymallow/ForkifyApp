@@ -1,7 +1,7 @@
 import 'package:ForkifyApp/features/recipe/domain/entities/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:ForkifyApp/ui/details/recipe_details_page.dart';
-import 'package:ForkifyApp/ui/home/recipe_summary.dart';
+import 'package:ForkifyApp/features/recipe/presentation/widgets/recipe_summary.dart';
 
 class TopRecipes extends StatelessWidget {
   const TopRecipes({

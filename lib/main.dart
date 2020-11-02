@@ -1,6 +1,6 @@
+import 'package:ForkifyApp/features/recipe/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ForkifyApp/utilities/constants.dart';
-import 'package:ForkifyApp/ui/home/home_page.dart';
 import 'ioc.dart' as ioc;
 
 void main() async {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           textTheme: Theme.of(context)
               .textTheme
               .apply(bodyColor: colorPrimary, fontFamily: 'Oxygen')),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       home: MyHomePage(),
     );
   }

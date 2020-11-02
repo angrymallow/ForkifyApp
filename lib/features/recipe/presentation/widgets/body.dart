@@ -1,7 +1,7 @@
 import 'package:ForkifyApp/features/recipe/domain/entities/recipe.dart';
-import 'package:flutter/material.dart';
+import 'package:ForkifyApp/features/recipe/presentation/widgets/search_header_sliver.dart';
 import 'package:ForkifyApp/ui/components/top_recipes.dart';
-import 'package:ForkifyApp/ui/components/search_header_sliver.dart';
+import 'package:flutter/material.dart';
 
 class PageBody extends StatelessWidget {
   const PageBody({
@@ -28,7 +28,7 @@ class PageBody extends StatelessWidget {
               maxExtent: 300.0,
             ),
           ),
-          SliverToBoxAdapter(child: TopRecipes(topRecipes: this.topRecipes)),
+          // SliverToBoxAdapter(child: TopRecipes(topRecipes: this.topRecipes)),
         ],
       ),
     );
