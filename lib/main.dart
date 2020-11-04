@@ -1,4 +1,4 @@
-import 'package:ForkifyApp/features/recipe/presentation/pages/home_page.dart';
+import 'package:ForkifyApp/features/recipe/presentation/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ForkifyApp/utilities/constants.dart';
 import 'ioc.dart' as ioc;
