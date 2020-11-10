@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class RecipeSummary extends StatelessWidget {
   const RecipeSummary({
-    @required this.title, 
+    @required this.title,
     @required this.publisher,
     @required this.imageURL,
-    @required this.likes, 
+    @required this.likes,
     Key key,
   }) : super(key: key);
 
@@ -15,7 +15,6 @@ class RecipeSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       height: 90,
       padding: EdgeInsets.all(15.0),
@@ -23,19 +22,18 @@ class RecipeSummary extends StatelessWidget {
         children: [
           Hero(
             tag: this.title.toUpperCase(),
-                      child: Container(
+            child: Container(
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(100)),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(
-                          Color(0xFFFBDB89).withOpacity(0.4),
-                          BlendMode.lighten),
-                      image: NetworkImage(
-                          '${this.imageURL}'))),
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(
+                      Color(0xFFFBDB89).withOpacity(0.4), BlendMode.lighten),
+                  image: NetworkImage('${this.imageURL}'),
+                ),
+              ),
             ),
           ),
           Expanded(
@@ -43,13 +41,11 @@ class RecipeSummary extends StatelessWidget {
               margin: EdgeInsets.only(left: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "${this.title.toUpperCase()}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300),
+                    style: TextStyle(fontWeight: FontWeight.w300),
                   ),
                   Row(
                     children: [
@@ -70,14 +66,11 @@ class RecipeSummary extends StatelessWidget {
                             height: 18,
                           ),
                           Container(
-                            margin:
-                                EdgeInsets.only(left: 5),
+                            margin: EdgeInsets.only(left: 5),
                             child: Text(
                               '${this.likes}',
                               style: TextStyle(
-                                  fontWeight:
-                                      FontWeight.w300,
-                                  fontSize: 12),
+                                  fontWeight: FontWeight.w300, fontSize: 12),
                             ),
                           )
                         ],
